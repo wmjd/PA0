@@ -13,3 +13,4 @@ clean:
 	-rm *.cmo
 	-rm *.log
 	-rm *.cache
+	-rm test.run
