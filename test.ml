@@ -7,6 +7,9 @@ let t_string name value expected = name>::
 let t_int name value expected = name>::
   (fun _ -> assert_equal expected value ~printer:string_of_int)
 
+let t_alpha name value expected = name>::
+  (fun _ -> assert_equal expected value )
+
 let tree1 = Leaf
 and tree2 = Node("", Leaf, Leaf)
 and tree3 = Node("b", Node("a", Leaf, Leaf), Node("c", Leaf, Leaf))
@@ -37,13 +40,15 @@ let suite =
  t_int "size_tree5" (size tree5) 5;
  t_int "size_tree6" (size tree6) 6;
 
-
  t_int "height_tree1" (height tree1) 0;
  t_int "height_tree2" (height tree2) 1;
  t_int "height_tree3" (height tree3) 2;
  t_int "height_tree4" (height tree4) 3;
  t_int "height_tree5" (height tree5) 4;
  t_int "height_tree6" (height tree6) 4;
+
+ t_alpha "increment_all1" (increment_all [0;1;2;3;4]) [1;2;3;4;5];
+ t_alpha "increment_all1" (increment_all []) []
  
  ]
 ;;
