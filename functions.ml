@@ -66,7 +66,7 @@ let every_other ls =
 		| x::y::zs -> aux zs (x::acc)
 	in aux ls []
 
-let sum_all (ll : int list list) =
+let sum_all (ll : int list list) : int list=
 	let rec aux ll acc = match ll with
 		| [] -> List.rev acc
 		| ls::more -> aux more ((List.fold_left (fun running_total x -> x + running_total) 0 ls)::acc)
